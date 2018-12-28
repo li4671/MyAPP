@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0" />
+    <title>底部导航</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        #header{
+            position:absolute;
+            width: 100%;
+            top: 0px;
+            background-color: gold;
+        }
+        #header .table{
+            padding: 0;
+            margin: 0;
+            border:1px solid gold;
+        }
+        #header .table td{
+            text-align:center;
+            border:1px solid gold;
+        }
+        #header .table .glyphicon{
+            margin: 6px;
+            font-size: 16px;
+        }
+        #header .table p{
+            padding: 0;
+            margin: 0;
+            font-size: 20px;
+        }
+        #footer{
+            position:absolute;
+            width: 100%;
+            bottom: 0px;
+            background-color: gold;
+        }
+        #footer .table{
+            padding: 0;
+            margin: 0;
+            border:1px solid gold;
+        }
+        #footer .table td{
+            text-align:center;
+            border:1px solid gold;
+        }
+        #tableTd .active{
+            color: white;
+
+            /* display:grid; */
+        }
+        #main{
+            padding: 0;
+            padding-top: 30px;
+            margin: 0;
+            width: 100%;
+        }
+        #main object{
+            padding: 0;
+            padding-top: 30px;
+            margin: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="StatusBar" style="height:15px;"></div>
+    <!-- header区域分布在各自页面 -->
+    <div id="header">
+        <table class="table">
+            <tr id="myDevice">
+                <td><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></td>
+                <td>
+                    <p>我的设备</p>
+                </td>
+                <td><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></td>
+            </tr>
+            <tr id="myMessage">
+                <td><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></td>
+                <td>
+                    <p>消息中心</p>
+                </td>
+                <td><span class="glyphicon glyphicon-envelope" aria-hidden="true" style="color:gold;"></span></td>
+            </tr>
+            <tr id="mySetting">
+                <td>
+                    <p>个人中心</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 以下是main区域 -->
+    <div id="main">
+        <!-- main区域内容由js函数()调用显示 -->
+    </div>
+
+    <!-- 以下是footer区域 -->
+    <div id="footer">
+        <table class="table">
+            <tr>
+                <td id="tableTd1" onclick="funcDevice() "><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span><br>我的设备</td>
+                <td id="tableTd2" onclick="funcMessage()"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><br>消息中心</td>
+                <td id="tableTd3" onclick="funcSetting()"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>个人中心</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    var table1 = document.getElementById('tableTd1');
+    var table2 = document.getElementById('tableTd2');
+    var table3 = document.getElementById('tableTd3');
+
+    var JSmyDevice = document.getElementById('myDevice');
+    var JSmyMessage = document.getElementById('myMessage');
+    var JSmySetting = document.getElementById('mySetting');
+
+
+    window.onload = function () {
+        funcDevice();
+        apiready = function () {
+            api.setStatusBarStyle({
+                color: '#FFD700'
+            });
+        }
+    }
+    $(document).ready(function () {
+        bodyContent = $.ajax({
+            url: "./html/mySetting.html",
+            global: false,
+            type: "POST",
+            data: ({
+                id: this.getAttribute('row')
+            }),
+            dataType: "html",
+            async: false,
+            success: function (msg) {
+                alert(msg);
+            }
+        })
+    });
+
+    function funcDevice() {
+        document.getElementById("main").innerHTML =
+            '<html id="object" data="./html/myDevice.html""></html>';
+        table1.style.color = 'white';
+        table2.style.color = 'black';
+        table3.style.color = 'black';
+
+        JSmyDevice.style.display = 'table-row';
+        JSmyMessage.style.display = 'none';
+        JSmySetting.style.display = 'none';
+    }
+
+    function funcMessage() {
+        document.getElementById("main").innerHTML =
+            '<html id="object" data="./html/myMessage.html"></html>';
+        table1.style.color = 'black';
+        table2.style.color = 'white';
+        table3.style.color = 'black';
+
+        JSmyDevice.style.display = 'none';
+        JSmyMessage.style.display = 'table-row';
+        JSmySetting.style.display = 'none';
+    }
+
+    function funcSetting() {
+        document.getElementById("main").innerHTML =
+            '<html id="object" data="./html/mySetting.html"></html>';
+        table1.style.color = 'black';
+        table2.style.color = 'black';
+        table3.style.color = 'white';
+
+        JSmyDevice.style.display = 'none';
+        JSmyMessage.style.display = 'none';
+        JSmySetting.style.display = 'table-row';
+    }
+</script>
