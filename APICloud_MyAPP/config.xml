@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget id="A0000000000021"  version="0.0.1">
+<widget id="A0000000000022"  version="0.0.1">
     <name>HelloAPICloud</name>
     <description>
         Example For APICloud.
@@ -8,15 +8,25 @@
         Developer
     </author>
     <content src="index.html" />
-	<preference name="appBackground" value="rgb(255,255,255)"/>
-	<preference name="windowBackground" value="rgb(255,255,255)"/>
-	<preference name="frameBackgroundColor" value="rgb(255,255,255)"/>
+    <access origin="*" />
+    <preference name="pageBounce" value="false"/>
+	<preference name="appBackground" value="rgba(0,0,0,0.0)"/>
+	<preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
+	<preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
+	<preference name="hScrollBarEnabled" value="true"/>
+	<preference name="vScrollBarEnabled" value="true"/>
 	<preference name="autoLaunch" value="true"/>
-	<preference name="autoUpdate" value="true"/>
-	<preference name="smartUpdate" value="false"/>
-	<preference name="debug" value="false"/>
+	<preference name="fullScreen" value="false"/>
+	<preference name="autoUpdate" value="true" />
+	<preference name="smartUpdate" value="false" />
+	<preference name="debug" value="true"/>
 	<preference name="statusBarAppearance" value="true"/>
-	<permission name="location"/>
-	<permission name="internet"/>
-	<access origin="*"/>
+	<permission name="readPhoneState" />
+	<permission name="camera" />
+	<permission name="record" />
+	<permission name="location" />
+	<permission name="fileSystem" />
+	<permission name="internet" />
+	<permission name="bootCompleted" />
+	<permission name="hardware" />
 </widget>

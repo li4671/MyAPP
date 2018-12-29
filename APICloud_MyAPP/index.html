@@ -2,189 +2,161 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0" />
-    <title>底部导航</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
 
-    <style>
-        body{
-            padding: 0;
-            margin: 0;
+        #wrap {
+            height: 100%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-flex-flow: column;
+            flex-flow: column;
         }
-        #header{
-            padding-top: 15px;
-            position:absolute;
+
+        #header {
+            background-color: gold;
+            color: #000;
             width: 100%;
-            top: 0px;
-            background-color: rgb(255, 201, 14);
-        }
-        #header .table{
-            padding: 0;
-            margin: 0;
-            border:1px solid rgb(255, 201, 14);
-        }
-        #header .table td{
-            text-align:center;
-            border:1px solid rgb(255, 201, 14);
-        }
-        #header .table .glyphicon{
-            margin: 6px;
-            font-size: 16px;
-        }
-        #header .table p{
-            padding: 0;
-            margin: 0;
             font-size: 20px;
+            text-align: center;
         }
-        #footer{
-            position:absolute;
-            width: 100%;
-            bottom: 0px;
-            background-color: rgb(255, 201, 14);
-        }
-        #footer .table{
-            padding: 0;
-            margin: 0;
-            border:1px solid rgb(255, 201, 14);
-        }
-        #footer .table td{
-            text-align:center;
-            border:1px solid rgb(255, 201, 14);
-        }
-        #tableTd .active{
-            color: white;
 
-            /* display:grid; */
-        }
-        #main{
-            padding: 0;
-            padding-top: 30px;
-            margin: 0;
+        #header table{
             width: 100%;
         }
-        #main object{
+
+        #main {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+
+        #footer {
             padding: 0;
-            padding-top: 30px;
             margin: 0;
+            line-height: 30px;
+            background-color: gold;
+            text-align: center;
+        }
+
+        #footer table {
             width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        #footer td {
+            padding: 0;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        #footer span {
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
         }
     </style>
 </head>
 
 <body>
-    <div id="StatusBar" style="height:15px;"></div>
-    <!-- header区域分布在各自页面 -->
-    <div id="header">
-        <table class="table">
-            <tr id="myDevice">
-                <td><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></td>
-                <td>
-                    <p>我的设备</p>
-                </td>
-                <td><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></td>
-            </tr>
-            <tr id="myMessage">
-                <td><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></td>
-                <td>
-                    <p>消息中心</p>
-                </td>
-                <td><span class="glyphicon glyphicon-envelope" aria-hidden="true" style="color:rgb(255, 201, 14);"></span></td>
-            </tr>
-            <tr id="mySetting">
-                <td>
-                    <p>个人中心</p>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <div id="wrap">
+        <div id="header">
+            <table style="width:100%;">
+                <tr id="myDevice">
+                    <td><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></td>
+                    <td>我的设备</td>
+                    <td><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span></td>
+                </tr>
+                <tr id="myMessage">
+                    <td><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></td>
+                    <td>消息中心</td>
+                    <td><span class="glyphicon glyphicon-envelope" style="color:gold;" aria-hidden="true"></span></td>
+                </tr>
+                <tr id="mySetting">
+                    <td>个人中心</td>
+                </tr>
+            </table>
 
-    <!-- 以下是main区域 -->
-    <div id="main">
-        <!-- main区域内容由js函数()调用显示 -->
-    </div>
+        </div>
+        <div id="main">
 
-    <!-- 以下是footer区域 -->
-    <div id="footer">
-        <table class="table">
-            <tr>
-                <td id="tableTd1" onclick="funcDevice() "><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span><br>我的设备</td>
-                <td id="tableTd2" onclick="funcMessage()"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><br>消息中心</td>
-                <td id="tableTd3" onclick="funcSetting()"><span class="glyphicon glyphicon-user" aria-hidden="true"></span><br>个人中心</td>
-            </tr>
-        </table>
+        </div>
+        <div id="footer">
+            <table>
+                <td id="myDevice"  onclick="myOpenFrame(this);"><span class="glyphicon glyphicon-tasks"    aria-hidden="true"></span><br>我的设备</td>
+                <td id="myMessage" onclick="myOpenFrame(this);"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><br>消息中心</td>
+                <td id="mySetting" onclick="myOpenFrame(this);"><span class="glyphicon glyphicon-user"     aria-hidden="true"></span><br>个人中心</td>
+            </table>
+        </div>
     </div>
 </body>
-
-</html>
+<script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
-    var table1 = document.getElementById('tableTd1');
-    var table2 = document.getElementById('tableTd2');
-    var table3 = document.getElementById('tableTd3');
+    var domHeaderTr = $api.domAll('#header tr');
+    var domFooterTd = $api.domAll('#footer td');
 
-    var JSmyDevice = document.getElementById('myDevice');
-    var JSmyMessage = document.getElementById('myMessage');
-    var JSmySetting = document.getElementById('mySetting');
+    apiready = function () {
+        domFooterTd[0].style.color = '#fff';
+        domHeaderTr[1].style.display = 'none';
+        domHeaderTr[2].style.display = 'none';
+        changeMain('myDevice');
+        for (i in domHeaderTr) {
+            console.log(i);
+        }
 
+    };
 
-    window.onload = function () {
-        funcDevice();
-        apiready = function () {
-            api.setStatusBarStyle({
-                color: 'rgb(255, 201, 14)'
-            });
+    function myOpenFrame(frameName) {
+        domFooterTd[0].style.color = '#000';
+        domFooterTd[1].style.color = '#000';
+        domFooterTd[2].style.color = '#000';
+        frameName.style.color = '#fff';
+        changeMain(frameName.id);
+        changeHeader(frameName.id);
+    }
+
+    function changeHeader(tag) {
+        for (var i = 0, len = domHeaderTr.length; i < len; i++) {
+            if (domHeaderTr[i].id == tag) {
+                domHeaderTr[i].style.display = 'table-row';
+            } else {
+                domHeaderTr[i].style.display = 'none';
+            }
         }
     }
-    $(document).ready(function () {
-        bodyContent = $.ajax({
-            url: "./html/mySetting.html",
-            global: false,
-            type: "POST",
-            data: ({
-                id: this.getAttribute('row')
-            }),
-            dataType: "html",
-            async: false,
-            success: function (msg) {
-                alert(msg);
+
+    function changeMain(tag) {
+        var header = $api.byId('header');
+        //适配iOS 7+，Android 4.4+状态栏
+        $api.fixStatusBar(header);
+
+        var headerPos = $api.offset(header);
+        var main = $api.byId('main');
+        var mainPos = $api.offset(main);
+        api.openFrame({
+            name: 'main',
+            url: 'html/' + tag + '.html',
+            bounces: false,
+            rect: {
+                x: 0,
+                y: headerPos.h,
+                w: 'auto',
+                h: mainPos.h
             }
-        })
-    });
-
-    function funcDevice() {
-        document.getElementById("main").innerHTML =
-            '<html id="object" data="./html/myDevice.html""></html>';
-        table1.style.color = 'white';
-        table2.style.color = 'black';
-        table3.style.color = 'black';
-
-        JSmyDevice.style.display = 'table-row';
-        JSmyMessage.style.display = 'none';
-        JSmySetting.style.display = 'none';
-    }
-
-    function funcMessage() {
-        document.getElementById("main").innerHTML =
-            '<html id="object" data="./html/myMessage.html"></html>';
-        table1.style.color = 'black';
-        table2.style.color = 'white';
-        table3.style.color = 'black';
-
-        JSmyDevice.style.display = 'none';
-        JSmyMessage.style.display = 'table-row';
-        JSmySetting.style.display = 'none';
-    }
-
-    function funcSetting() {
-        document.getElementById("main").innerHTML =
-            '<html id="object" data="./html/mySetting.html"></html>';
-        table1.style.color = 'black';
-        table2.style.color = 'black';
-        table3.style.color = 'white';
-
-        JSmyDevice.style.display = 'none';
-        JSmyMessage.style.display = 'none';
-        JSmySetting.style.display = 'table-row';
+        });
     }
 </script>
+
+</html>
